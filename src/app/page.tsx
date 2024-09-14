@@ -52,13 +52,13 @@ export default function HomePage() {
     setAnswer("");
   };
 
-  const handlePrevious = () => {
-    if (elements) {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex - 1 + elements.length) % elements.length
-      );
-    }
-  };
+  //const handlePrevious = () => {
+  //  if (elements) {
+  //    setCurrentIndex(
+  //      (prevIndex) => (prevIndex - 1 + elements.length) % elements.length
+  //    );
+  //  }
+  //};
 
   if (loading) {
     return <p>Loading...</p>;
