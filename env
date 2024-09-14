@@ -1,0 +1,8 @@
+POSTGRES_URL="postgres://default:SzauW10EAOch@ep-tight-mode-a1ph2cut-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_PRISMA_URL="postgres://default:SzauW10EAOch@ep-tight-mode-a1ph2cut-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+POSTGRES_URL_NO_SSL="postgres://default:SzauW10EAOch@ep-tight-mode-a1ph2cut-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb"
+POSTGRES_URL_NON_POOLING="postgres://default:SzauW10EAOch@ep-tight-mode-a1ph2cut.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_USER="default"
+POSTGRES_HOST="ep-tight-mode-a1ph2cut-pooler.ap-southeast-1.aws.neon.tech"
+POSTGRES_PASSWORD="SzauW10EAOch"
+POSTGRES_DATABASE="verceldb"

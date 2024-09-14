@@ -7,11 +7,14 @@ import Flashcard from "./components/Flashcard";
 
 async function getElements(): Promise<ChemistryData["elements"]> {
   try {
-    const res = await axios.get("http://127.0.0.1:5000/chemistryData", {
-      headers: {
-        "Cache-Control": "max-age=60",
-      },
-    });
+    const res = await axios.get(
+      "https://pixelonlyplz.pythonanywhere.com/chemistryData",
+      {
+        headers: {
+          "Cache-Control": "max-age=60",
+        },
+      }
+    );
     console.log(res.data.elements);
     return res.data.elements;
   } catch (error) {
