@@ -17,7 +17,7 @@ interface Compound {
   other_info: string;
 }
 
-interface Element {
+export interface Element {
   atomic_number: number;
   element_name: string;
   element_symbol: string;

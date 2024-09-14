@@ -3,6 +3,7 @@
 import { ChemistryData } from "./lib/types";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Flashcard from "./components/Flashcard";
 
 async function getElements(): Promise<ChemistryData["elements"]> {
   try {
@@ -19,32 +20,6 @@ async function getElements(): Promise<ChemistryData["elements"]> {
   }
 }
 
-const Flashcard = ({ element, isFlipped, onFlip }) => {
-  return (
-    <div
-      className="w-64 h-96 bg-white rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105"
-      onClick={onFlip}
-    >
-      <div className="w-full h-full flex items-center justify-center p-4">
-        {isFlipped ? (
-          <div className="text-center">
-            <div className="text-xl font-semibold">
-              Atomic Number: {element.atomicNumber}
-            </div>
-            <div className="text-xl mt-2">
-              Atomic Mass: {element.atomicMass}
-            </div>
-          </div>
-        ) : (
-          <div className="text-center">
-            <div className="text-6xl font-bold">{element.symbol}</div>
-            <div className="text-2xl mt-2">{element.name}</div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 export default function HomePage() {
   const [elements, setElements] = useState<ChemistryData["elements"] | null>(
@@ -54,6 +29,8 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
+  const [isFlipped, setIsFlipped] = useState(false);
+  
   useEffect(() => {
     async function fetchElements() {
       try {
@@ -106,24 +83,19 @@ export default function HomePage() {
       console.log("Incorrect");
     }
   }
+  function onFlip(){
+    setIsFlipped(isFlipped? false: true);
+    console.log(isFlipped);
+  }
+  
   return (
-    <div>
-      <div key={currentElement.id}>
-        <h1>
-          {currentElement.element_name} ({currentElement.element_symbol})
-        </h1>
-        <p>{currentElement.other_info}</p>
-      </div>
-      <button onClick={handlePrevious} disabled={elements.length <= 1}>
-        Previous
-      </button>
-      <button onClick={handleNext} disabled={elements.length <= 1}>
-        Next
-      </button>
-      <input
-        className="text-cyan-600"
-        type="text"
-        value={answer}
+    <div className="flex justify-center">
+      <Flashcard
+        answer={answer}
+        element={currentElement}
+        isFlipped={isFlipped}
+        onFlip={onFlip}
+        Click={handleNext}
         onChange={(e) => handleInput(e.target.value)}
       />
     </div>
